@@ -120,12 +120,12 @@ export class DiaryPage extends Component {
     showNote = (id) => {
         let foundNote = this.state.notes.find((note) => {
             return (note.id === id)
-        })
+        });
         return(
             this.setState({
                 modalIsOpen: true,
                 note: {
-                    id: id,
+                    id: foundNote.id,
                     title: foundNote.title,
                     desc: foundNote.desc,
                     date: foundNote.date,
@@ -133,6 +133,14 @@ export class DiaryPage extends Component {
                 }
             })
         );
+    }
+
+
+    deleteNote = () => {
+        let ref = firebaseConnection.database().ref('notes');
+        ref.child(this.state.note.id).remove();
+        this.closeModal();
+        return <Redirect to="/"/>
     }
 
 
@@ -178,7 +186,7 @@ export class DiaryPage extends Component {
                                 value={this.state.note.desc}/>
                     </div>
                 <button className="btn_ mid" onClick={this.closeModal}>Close</button>
-                <button className="btn_ mid" onClick={this.closeModal}>Delete</button>
+                <button className="btn_ mid" onClick={this.deleteNote}>Delete</button>
             </Modal>
         )
     }
