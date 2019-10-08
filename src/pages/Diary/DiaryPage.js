@@ -178,6 +178,7 @@ export class DiaryPage extends Component {
                                 value={this.state.note.desc}/>
                     </div>
                 <button className="btn_ mid" onClick={this.closeModal}>Close</button>
+                <button className="btn_ mid" onClick={this.closeModal}>Delete</button>
             </Modal>
         )
     }
