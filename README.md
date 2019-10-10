@@ -49,7 +49,15 @@ Created in **Javascript** using **React** framework & **Firebase** platform for 
 * React-Router-Dom 5.0.1
 
 ## Screenshots
-//todo
+<p align="center">
+	<img src="./src/assets/screenshots/whatsup-screenshot1.png" alt="Whatsup home page"/>
+	<img src="./src/assets/screenshots/whatsup-screenshot2.png" alt="Whatsup login page"/>
+	<img src="./src/assets/screenshots/whatsup-screenshot3.png" alt="Whatsup signup page"/>
+	<img src="./src/assets/screenshots/whatsup-screenshot4.png" alt="Whatsup calendar page"/>
+	<img src="./src/assets/screenshots/whatsup-screenshot5.png" alt="Whatsup add note page"/>
+	<img src="./src/assets/screenshots/whatsup-screenshot6.png" alt="Whatsup note overview page"/>
+</p>
+
 
 ## Setup
 * [Install Node.js](https://nodejs.org/en/download/)
