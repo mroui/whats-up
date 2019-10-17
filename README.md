@@ -75,7 +75,7 @@ npm install -g npm
 npm install
 ```
 * Create Firebase project and add the project configurations to the ./src/firebase/config.js file -> 
-[Instruction](https://ionicthemes.com/tutorials/about/setting-up-a-database-for-an-ionic-app-with-firebase)
+[Instruction](https://sebhastian.com/react-firebase-real-time-database-guide)
 * Launch App
 ```
 npm start
