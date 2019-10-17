@@ -75,7 +75,26 @@ npm install -g npm
 npm install
 ```
 * Create Firebase project and add the project configurations to the ./src/firebase/config.js file -> 
-[Instruction](https://sebhastian.com/react-firebase-real-time-database-guide)
+[Instruction](https://firebase.google.com/docs/web/setup)
+The config.js file should looks like:
+```
+import firebase from 'firebase';
+
+  const firebaseConfig = {
+		apiKey: "api-key",
+		authDomain: "project-id.firebaseapp.com",
+		databaseURL: "https://project-id.firebaseio.com",
+		projectId: "project-id",
+		storageBucket: "project-id.appspot.com",
+		messagingSenderId: "sender-id",
+		appId: "app-id",
+		measurementId: "G-measurement-id",
+    };
+
+  const fire = firebase.initializeApp(firebaseConfig);
+
+  export default fire;
+```
 * Launch App
 ```
 npm start
