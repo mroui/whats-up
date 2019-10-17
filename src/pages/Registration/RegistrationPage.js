@@ -15,7 +15,26 @@ export class RegistrationPage extends Component {
         repeatpassword: null,
         error: null,
         redirect: false,
-        user: firebaseConnection.auth().currentUser
+        user: null
+    }
+
+
+    componentDidMount = () => {
+        return this.authListener();
+    }
+
+    
+    authListener = () => {
+        return (
+            firebaseConnection.auth().onAuthStateChanged((user_) => {
+                if (user_) {
+                    this.setState({user: user_});
+                }
+                else {
+                    this.setState({user: null});
+                }
+            })
+        )
     }
 
 
@@ -94,7 +113,7 @@ export class RegistrationPage extends Component {
 
 
 
-    createBodyBlock = () => {
+    createContent = () => {
         return (
             <div className="Body">
                 <div className="block">
@@ -127,7 +146,7 @@ export class RegistrationPage extends Component {
 
     render() {
         return (
-            (this.state.user !== null) ? <Redirect to="/diary"/> :  this.createBodyBlock()
+            (this.state.user) ? <Redirect to="/diary"/> :  this.createContent()
         )
     }
 }

@@ -14,7 +14,7 @@ export class LoginPage extends Component {
         password: null,
         error: null,
         redirect: false,
-        user: firebaseConnection.auth().currentUser
+        user: null
     }
       
       
@@ -22,6 +22,25 @@ export class LoginPage extends Component {
         if (this.state.redirect) {
             return <Redirect to='/diary' />
         }
+    }
+
+
+    componentDidMount = () => {
+        return this.authListener();
+    }
+
+    
+    authListener = () => {
+        return (
+            firebaseConnection.auth().onAuthStateChanged((user_) => {
+                if (user_) {
+                    this.setState({user: user_});
+                }
+                else {
+                    this.setState({user: null});
+                }
+            })
+        )
     }
 
 
@@ -76,7 +95,7 @@ export class LoginPage extends Component {
 
 
     
-    createBodyBlock = () => {
+    createContent = () => {
         return (
             <div className="Body">
             <div className="block">
@@ -109,7 +128,8 @@ export class LoginPage extends Component {
 
     render() {
         return (
-            (this.state.user !== null) ? <Redirect to="/diary"/> :  this.createBodyBlock()
+            console.log(this.state.user),
+            (this.state.user) ? <Redirect to="/diary"/> : this.createContent()
         )
     }
 }
