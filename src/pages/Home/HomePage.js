@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './HomePage.css';
+import '../signingContent.css';
 import login_icon from '../../assets/images/login_icon.svg';
 import HomeLoginButton from '../../components/HomeLoginButton/HomeLoginButton';
 import HomeRegisterButton from '../../components/HomeRegisterButton/HomeRegisterButton';
@@ -33,31 +33,21 @@ export class HomePage extends Component {
     }
 
 
-
     createContent = () => {
         return (
-            <div className="block-content">
-                <img className="img" src={login_icon} alt="login icon"/>
-                <h2 className="h2">Welcome to WhatsUp!</h2>
-                <div className="btn">
-                    <HomeLoginButton/> 
-                </div>
-                <div className="btn">
-                    <HomeRegisterButton/>
-                </div>
+            <div className="content">
+                <img src={login_icon} alt="login icon"/>
+                <h2>Welcome to WhatsUp!</h2>
+                <HomeLoginButton/>
+                <HomeRegisterButton/>
             </div>
         );
     }
 
 
-
     createBodyBlock = () => {
         return (
-            <div className="Body">
-            <div className="block">
-                {(this.state.user) ? <Redirect to="/diary"/> : this.createContent()}
-            </div>
-            </div>
+                (this.state.user) ? <Redirect to="/diary"/> : this.createContent()
         );
     }
 
