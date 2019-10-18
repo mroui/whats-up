@@ -1,51 +1,16 @@
-.block-content {
-    position:absolute;
-    left:50%;
-    top:50%;
-    transform: translate(-50%,-50%);
-}
-
-
-.h2-login {
-    font: bold 24px "Century Schoolbook", Georgia, Times, serif;
-    color: #333;
-    margin: auto;
-    letter-spacing: -2px;
-    padding: 12px;
-    text-shadow: 0 1px 0 #ccc,
-        0 2px 0 #c9c9c9,
-        0 3px 0 #bbb,
-        0 4px 0 #b9b9b9,
-        0 5px 0 #aaa,
-        0 6px 1px rgba(0,0,0,.1),
-        0 0 5px rgba(0,0,0,.1),
-        0 1px 3px rgba(0,0,0,.3),
-        0 3px 5px rgba(0,0,0,.2),
-        0 5px 10px rgba(0,0,0,.25),
-        0 10px 10px rgba(0,0,0,.2),
-        0 20px 20px rgba(0,0,0,.15);
-}
-
-.img-login {
-    width: 120px;
-}
-
-.inputDiv {
-    padding-top: 10px;
-}
-
-.btn-login {
+.forminput {
     padding: 10px;
+    margin-top: 8px;
 }
 
-.input {
-    padding: 10px;
+#loginform {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
 }
 
 .error-state {
-    padding: 12px;
     color: red;
     font-family: monospace;
     font-size: 12px;
-
 }
