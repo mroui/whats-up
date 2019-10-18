@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import reg_icon from '../../assets/images/login_icon.svg';
 import './RegistrationPage.css';
+import '../signingContent.css';
 import RegistrationButton from '../../components/RegistrationSubmitButton/RegistrationSubmitButton';
 import BackButton from '../../components/BackButton/BackButton';
 import firebaseConnection from '../../firebase/config';
@@ -44,13 +45,12 @@ export class RegistrationPage extends Component {
         }
     }
 
-    
 
     checkAccount = (e) => {
         if (this.state.repeatpassword === this.state.password) {
             e.preventDefault();
             firebaseConnection.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-                .then((user_) => {
+                .then(() => {
                     this.setState({
                         redirect: true
                     })
@@ -69,13 +69,11 @@ export class RegistrationPage extends Component {
     }
 
 
-
     handleEmailChanged = (event) => {
         this.setState({
             email: event.target.value
         })
     }
-
 
 
     handlePasswordChanged = (event) => {
@@ -84,7 +82,6 @@ export class RegistrationPage extends Component {
         })
     }
 
-    
 
     handleRepeatPasswordChanged = (event) => {
         this.setState({
@@ -93,55 +90,36 @@ export class RegistrationPage extends Component {
     }
 
 
-
     createFormInputs = () => {
         return (
-            <div>
-                <input className="input" type="email" placeholder="E-mail"
+            <form id="regform">
+                <input className="forminput" type="email" placeholder="E-mail"
                     onChange={this.handleEmailChanged}/>
-                <div className="inputDiv">
-                    <input className="input" type="password" placeholder="Password"
-                        onChange={this.handlePasswordChanged}/>
-                </div>
-                <div className="inputDiv">
-                    <input className="input" type="password" placeholder="Repeat password"
-                        onChange={this.handleRepeatPasswordChanged}/>
-                </div>
-            </div>
+                <input className="forminput" type="password" placeholder="Password"
+                    onChange={this.handlePasswordChanged}/>
+                <input className="forminput" type="password" placeholder="Repeat password"
+                    onChange={this.handleRepeatPasswordChanged}/>
+            </form>
         )
     }
 
 
-
     createContent = () => {
         return (
-            <div className="Body">
-                <div className="block">
-                    <div className="block-content">
+            <div className="content">
+                <img src={reg_icon} alt="login icon"/>
+                <h2>Sign up</h2>
+                
+                {this.createFormInputs()}
+                {this.renderRedirect()}
 
-                        <img className="img-reg" src={reg_icon} alt="login icon"/>
-                        <h2 className="h2-reg">Sign up</h2>
-                        
-                        {this.createFormInputs()}
+                <div className="error-state">{this.state.error}</div>
 
-                        {this.renderRedirect()}
-
-                        <div className="error-state">{this.state.error}</div>
-
-                        <div className="btn-login">
-                            <RegistrationButton reg={this.checkAccount}/>
-                        </div>
-
-                        <div className="btn-login">
-                            <BackButton />
-                        </div>
-
-                    </div>
+                <RegistrationButton reg={this.checkAccount}/>
+                <BackButton/>
             </div>
-        </div>
         );
     }
-
 
 
     render() {
@@ -150,7 +128,6 @@ export class RegistrationPage extends Component {
         )
     }
 }
-
 
 
 export default RegistrationPage
