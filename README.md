@@ -50,7 +50,7 @@ Created in **Javascript** using **React** framework & **Firebase** platform for 
 * React-Router-Dom 5.0.1
 
 ## Demo
-[Live demo](whatsup-2031c.firebaseapp.com)
+[Live demo](https://whatsup-2031c.firebaseapp.com)
 
 ## Screenshots
 <p align="center">
