@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import LogoutButton from '../../components/LogoutButton/LogoutButton';
+import '../signingContent.css';
 import './DiaryPage.css';
 import Calendar from 'react-calendar';
 import AddNoteButton from '../../components/AddNoteButton/AddNoteButton';
@@ -9,7 +10,6 @@ import firebaseConnection from '../../firebase/config'
 import 'firebase/database';
 
 
-
 const style = {
     content : {
       top                   : '50%',
@@ -17,10 +17,12 @@ const style = {
       right                 : 'auto',
       bottom                : 'auto',
       marginRight           : '-50%',
-      transform             : 'translate(-50%, -50%)'
+      transform             : 'translate(-50%, -50%)',
+      minHeight: '200px',
+      height: '45%',
+      width: '30%'
     }
   };
-
 
 
 export class DiaryPage extends Component {
@@ -79,11 +81,9 @@ export class DiaryPage extends Component {
     }
 
 
-
     closeModal= () => {
         this.setState({modalIsOpen: false});
     }
-
 
 
     dateOnChange = (date) => {
@@ -93,13 +93,11 @@ export class DiaryPage extends Component {
     }
 
 
-
     getNotes = () => {
         return this.state.notes.filter((note) => {
             return new Date(note.date).toDateString()  === new Date(this.state.date).toDateString();
         })
     }
-
 
 
     addNote = (title, desc) => {
@@ -114,7 +112,6 @@ export class DiaryPage extends Component {
             })
         }
     }
-
 
 
     showNote = (id) => {
@@ -144,7 +141,6 @@ export class DiaryPage extends Component {
     }
 
 
-
     createCalendar = () => {
         return (
             <div className="calendar">
@@ -158,12 +154,12 @@ export class DiaryPage extends Component {
 
     createNoteList = () => {
         return (
-            <ul className="list">
+            <ul>
                 {this.getNotes().map((note) => {
                     return (
-                            <li key={note.id.toString()} onClick={() => this.showNote(note.id)}>
-                                <a href="# ">{note.title}</a>
-                            </li>
+                        <li key={note.id.toString()} onClick={() => this.showNote(note.id)}>
+                            <a href="# ">{note.title}</a>
+                        </li>
                     );
                 })}
             </ul>
@@ -179,48 +175,34 @@ export class DiaryPage extends Component {
                 onRequestClose={this.closeModal}
                 ariaHideApp={false}
                 style={style}>
-                    <h2>{this.state.note.title}</h2>
-                    <div>
-                        <textarea className="input_ textarea-show"
-                                type="text" disabled
-                                value={this.state.note.desc}/>
-                    </div>
-                <button className="btn_ mid" onClick={this.closeModal}>Close</button>
-                <button className="btn_ mid" onClick={this.deleteNote}>Delete</button>
+                <h2>{this.state.note.title}</h2>
+                <textarea className="input_ textarea-show" type="text" disabled value={this.state.note.desc}/>
+                <button className="btn_ small" onClick={this.closeModal}>Close</button>
+                <button className="btn_ small" onClick={this.deleteNote}>Delete</button>
             </Modal>
         )
     }
 
     
-    createBodyBlock = () => {
+    createContent = () => {
         return (
-            <div className="Body">
-                <div className="block">
-                    <div className="block-content">
-                        {this.createCalendar()}
-                        <div>
-                            {this.createNoteList()}
-                            {this.createModalShowNote()}
-                            <AddNoteButton add={(title, desc) => this.addNote(title, desc)}/>
-                        </div>
-                        <div className="logout-button">
-                            <LogoutButton/>
-                        </div>
-                    </div>
-                </div>
+            <div className="content">
+                {this.createCalendar()}
+                {this.createNoteList()}
+                {this.createModalShowNote()}
+                <AddNoteButton add={(title, desc) => this.addNote(title, desc)}/>
+                <LogoutButton/>
             </div>
         )
     }
 
 
-
     render() {
         return (
-            (this.state.user) ? this.createBodyBlock() : <Redirect to="/"/>
+            (this.state.user) ? this.createContent() : <Redirect to="/"/>
         )
     }
 }
-
 
 
 export default DiaryPage
