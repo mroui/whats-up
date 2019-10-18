@@ -11,6 +11,7 @@
 * [Introduction](#introduction)
 * [Features](#features)
 * [Technologies](#technologies)
+* [Demo](#demo)
 * [Screenshots](#screenshots)
 * [Setup](#setup)
 * [License](#license)
@@ -47,6 +48,9 @@ Created in **Javascript** using **React** framework & **Firebase** platform for 
 * React-Calendar 2.19.0
 * React-Modal 3.9.1
 * React-Router-Dom 5.0.1
+
+## Demo
+[Live demo](whatsup-2031c.firebaseapp.com)
 
 ## Screenshots
 <p align="center">
