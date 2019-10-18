@@ -10,7 +10,10 @@ const style = {
       right                 : 'auto',
       bottom                : 'auto',
       marginRight           : '-50%',
-      transform             : 'translate(-50%, -50%)'
+      transform             : 'translate(-50%, -50%)',
+      minHeight: '200px',
+      height: '45%',
+      width: '30%'
     }
   };
 
@@ -23,18 +26,15 @@ export class AddNoteButton extends Component {
         description: ""
       }
 
-
     
       openModal = () => {
         this.setState({modalIsOpen: true});
       }
-    
 
 
       closeModal = () => {
         this.setState({modalIsOpen: false});
       }
-
 
 
       addNote = () => {
@@ -45,11 +45,9 @@ export class AddNoteButton extends Component {
       }
 
 
-
       onChangeTitle = (event) => {
         this.setState({title: event.target.value});
       }
-
 
 
       onChangeDesc = (event) => {
@@ -65,24 +63,17 @@ export class AddNoteButton extends Component {
             onRequestClose={this.closeModal}
             ariaHideApp={false}
             style={style}>
-
-              <h2>Add note</h2>
-              <div>
-                  <input className="input_" placeholder="Title" 
-                            maxLength="50" type="text"
-                            onChange={this.onChangeTitle}/>
-                  <textarea className="input_ textarea-scroll"
-                            placeholder="Some text..." type="text"
-                            onChange={this.onChangeDesc}/>
-              </div>
-              <button className="btn_ small" onClick={this.addNote}>Add</button>
-              <button className="btn_ small" onClick={this.closeModal}>Cancel</button>
+            <h2>Add note</h2>
+            <input className="input_" placeholder="Title" maxLength="50" type="text" onChange={this.onChangeTitle}/>
+            <textarea className="input_ textarea-scroll" placeholder="Some text..." type="text" onChange={this.onChangeDesc}/>
+            <button className="btn_ small" onClick={this.addNote}>Add</button>
+            <button className="btn_ small" onClick={this.closeModal}>Cancel</button>
           </Modal>
         )
       }
 
 
-      createBodyBlock = () => {
+      createContent = () => {
         return (
           <div>
             <a href="# " className="btn_" onClick={this.openModal}>Add Note</a>
@@ -94,11 +85,10 @@ export class AddNoteButton extends Component {
 
     render() {
         return (
-            this.createBodyBlock()
+            this.createContent()
         )
     }
 }
-
 
 
 export default AddNoteButton
